@@ -1,12 +1,9 @@
 import React from 'react'
-import './App.css'
+import { RouterProvider } from 'react-router-dom'
+import routerConfig from './router'
 
 function App() {
-  return (
-    <div className="App">
-      <h1>问卷 FE1</h1>
-    </div>
-  )
+  return <RouterProvider router={routerConfig}></RouterProvider>
 }
 
 export default App
