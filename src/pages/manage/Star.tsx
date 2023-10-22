@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Typography, Empty, Spin, Pagination } from 'antd'
+import { Typography, Empty, Spin } from 'antd'
 import { useTitle } from 'ahooks'
 import ListSearch from '../../components/ListSearch'
 import QuestionCard from '../../components/QuestionCard'
