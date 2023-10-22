@@ -21,7 +21,7 @@ export async function createQuestion(): Promise<ResDataType> {
 }
 
 // 获取（查询）所有问卷
-export async function getQuestionList(options: Partial<ListParams>): Promise<ResDataType> {
+export async function getQuestionList(options: Partial<ListParams> = {}): Promise<ResDataType> {
   const url = '/api/question'
   const data = (await axios.get(url, { params: options })) as ResDataType
   return data
