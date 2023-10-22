@@ -1,44 +1,18 @@
 import React, { FC, useState } from 'react'
-import { Typography, Empty, Table, Tag, Space, Button, Modal } from 'antd'
+import { Typography, Empty, Table, Tag, Space, Button, Modal, Spin } from 'antd'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import ListSearch from '../../components/ListSearch'
+import useLoadQuestionListData from '../../hooks/useLoadQuestionListData'
 
 import styles from './common.module.scss'
 
 const { Title } = Typography
 const { confirm } = Modal
 
-const rawQuestionList = [
-  {
-    _id: 'q1',
-    title: '问卷1',
-    isPublished: false,
-    isStar: true,
-    answerCount: 6,
-    createdAt: '10月14日 20:29',
-  },
-  {
-    _id: 'q2',
-    title: '问卷2',
-    isPublished: true,
-    isStar: true,
-    answerCount: 3,
-    createdAt: '10月13日 11:29',
-  },
-  {
-    _id: 'q3',
-    title: '问卷3',
-    isPublished: false,
-    isStar: true,
-    answerCount: 9,
-    createdAt: '10月13日 10:55',
-  },
-]
-
 const Trash: FC = () => {
-  const [questionList, setQuestionList] = useState(rawQuestionList)
-
   const [selectedIds, setSelectedIds] = useState<string[]>([])
+  const { loading, data = {} } = useLoadQuestionListData({ isStar: true })
+  const { list = [] } = data
 
   const tableColumns = [
     {
@@ -85,7 +59,7 @@ const Trash: FC = () => {
         </Space>
       </div>
       <Table
-        dataSource={questionList}
+        dataSource={list}
         columns={tableColumns}
         pagination={false}
         rowKey={q => q._id}
@@ -109,8 +83,13 @@ const Trash: FC = () => {
         </div>
       </div>
       <div className={styles.content}>
-        {questionList.length === 0 && <Empty description="暂无数据" />}
-        {questionList.length > 0 && TableElem}
+        {loading && (
+          <div style={{ textAlign: 'center' }}>
+            <Spin />
+          </div>
+        )}
+        {!loading && list.length === 0 && <Empty description="暂无数据" />}
+        {list.length > 0 && TableElem}
       </div>
     </>
   )
