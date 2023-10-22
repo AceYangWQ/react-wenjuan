@@ -4,6 +4,8 @@ type ListParams = {
   keyword: string
   isStar: boolean
   isDeleted: boolean
+  page: number
+  pageSize: number
 }
 
 // 获取单个问卷

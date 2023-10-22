@@ -3,6 +3,7 @@ import { Typography, Empty, Table, Tag, Space, Button, Modal, Spin } from 'antd'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import ListSearch from '../../components/ListSearch'
 import useLoadQuestionListData from '../../hooks/useLoadQuestionListData'
+import ListPage from '../../components/ListPage'
 
 import styles from './common.module.scss'
 
@@ -12,7 +13,7 @@ const { confirm } = Modal
 const Trash: FC = () => {
   const [selectedIds, setSelectedIds] = useState<string[]>([])
   const { loading, data = {} } = useLoadQuestionListData({ isStar: true })
-  const { list = [] } = data
+  const { list = [], total = 0 } = data
 
   const tableColumns = [
     {
@@ -90,6 +91,9 @@ const Trash: FC = () => {
         )}
         {!loading && list.length === 0 && <Empty description="暂无数据" />}
         {list.length > 0 && TableElem}
+      </div>
+      <div className={styles.footer}>
+        <ListPage total={total} />
       </div>
     </>
   )
