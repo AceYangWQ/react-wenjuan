@@ -1,10 +1,13 @@
 import React, { FC, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Space, Typography, Form, Input, Button, Checkbox } from 'antd'
+import { Link, useNavigate } from 'react-router-dom'
+import { Space, Typography, Form, Input, Button, Checkbox, message } from 'antd'
 import { UserAddOutlined } from '@ant-design/icons'
+import { useRequest } from 'ahooks'
 
 import styles from './Login.module.scss'
-import { REGISTER_PATHNAME } from '../router'
+import { MANAGE_INDEX_PATHNAME, REGISTER_PATHNAME } from '../router'
+import { login } from '../services/user'
+import { setToken } from '../utils/user-token'
 
 const { Title } = Typography
 
@@ -31,13 +34,26 @@ const getFromStorage = () => {
 }
 
 const Login: FC = () => {
+  const nav = useNavigate()
   const [form] = Form.useForm()
   useEffect(() => {
     const { username, password } = getFromStorage()
     form.setFieldsValue({ username, password })
   }, [form])
+
+  const { run } = useRequest(async (username, password) => await login(username, password), {
+    manual: true,
+    onSuccess(result) {
+      const { token } = result
+      setToken(token)
+      message.success('登录成功')
+      nav(MANAGE_INDEX_PATHNAME)
+    },
+  })
+
   const onFinish = (values: any) => {
     const { username, password, remember } = values || {}
+    run(username, password)
     if (remember) {
       rememberInfo(username, password)
     } else {
