@@ -23,10 +23,10 @@ function useLoadQuestionListData(opt: Partial<Options> = {}) {
     const data = await getQuestionList({ keyword, isStar, isDeleted, page, pageSize })
     return data
   }
-  const { loading, data, error } = useRequest(load, {
+  const { loading, data, error, refresh } = useRequest(load, {
     refreshDeps: [searchParams], // 刷新的依赖项
   })
-  return { loading, data, error }
+  return { loading, data, error, refresh }
 }
 
 export default useLoadQuestionListData
