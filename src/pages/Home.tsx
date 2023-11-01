@@ -10,9 +10,6 @@ const { Title, Paragraph } = Typography
 const Home: FC = () => {
   const nav = useNavigate()
 
-  // function clickHandler() {
-  //   nav('/login')
-  // }
   return (
     <div className={styles.container}>
       <div>

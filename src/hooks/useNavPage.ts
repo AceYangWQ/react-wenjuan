@@ -3,16 +3,23 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import useGetUserInfo from './useGetUserInfo'
 import { LOGIN_PATHNAME, MANAGE_INDEX_PATHNAME, isLoginOrRegister, isNoNeedLogin } from '../router'
 
-function UserNavPage(waitingUserData: boolean) {
+function useNavPage(waitingUserData: boolean) {
   const { username } = useGetUserInfo()
   const { pathname } = useLocation()
   const nav = useNavigate()
+
   useEffect(() => {
     if (waitingUserData) return
+
+    // 已经登录了
     if (username) {
-      if (isLoginOrRegister(pathname)) return
-      nav(MANAGE_INDEX_PATHNAME)
+      if (isLoginOrRegister(pathname)) {
+        nav(MANAGE_INDEX_PATHNAME)
+      }
+      return
     }
+
+    // 未登录
     if (isNoNeedLogin(pathname)) {
       return
     } else {
@@ -21,4 +28,4 @@ function UserNavPage(waitingUserData: boolean) {
   }, [waitingUserData, username, pathname, nav])
 }
 
-export default UserNavPage
+export default useNavPage
