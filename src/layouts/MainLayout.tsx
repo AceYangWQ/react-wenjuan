@@ -4,7 +4,7 @@ import { Layout, Spin } from 'antd'
 import Logo from '../components/Logo'
 import UserInfo from '../components/UserInfo'
 import useLoadUserData from '../hooks/useLoadUserData'
-import UseNavPage from '../hooks/useNavPage'
+import useNavPage from '../hooks/useNavPage'
 
 import styles from './MainLayout.module.scss'
 
@@ -12,7 +12,7 @@ const { Header, Content, Footer } = Layout
 
 const MainLayout: FC = () => {
   const { waitingUserData } = useLoadUserData()
-  UseNavPage(waitingUserData)
+  useNavPage(waitingUserData)
 
   return (
     <Layout>
