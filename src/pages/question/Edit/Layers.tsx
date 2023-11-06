@@ -2,7 +2,7 @@ import React, { ChangeEvent, FC, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Input, message, Button, Space } from 'antd'
 import classNames from 'classnames'
-import useComponentInfo from '../../../hooks/useComponentInfo'
+import useGetComponentInfo from '../../../hooks/useGetComponentInfo'
 import {
   changeComponentHidden,
   changeComponentTitle,
@@ -14,7 +14,7 @@ import styles from './Layers.module.scss'
 import { EyeInvisibleOutlined, LockOutlined } from '@ant-design/icons'
 
 const Layers: FC = () => {
-  const { componentList = [], selectedId } = useComponentInfo()
+  const { componentList = [], selectedId } = useGetComponentInfo()
   // 正在修改标题的组件
   const [changingTitleId, setChangingTitleId] = useState('')
 

@@ -15,11 +15,11 @@ import {
   removeSelectedComponent,
   toggleComponentLocked,
 } from '../../../store/componentsReducer'
-import useComponentInfo from '../../../hooks/useComponentInfo'
+import useGetComponentInfo from '../../../hooks/useGetComponentInfo'
 import useBindCanvasKeyPress from '../../../hooks/useBindCanvasKeyPress'
 
 const EditToolbar: FC = () => {
-  const { selectedId, selectedComponent, copiedComponent } = useComponentInfo()
+  const { selectedId, selectedComponent, copiedComponent } = useGetComponentInfo()
   const { isLocked } = selectedComponent || {}
 
   useBindCanvasKeyPress()

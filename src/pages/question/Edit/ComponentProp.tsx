@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { useDispatch } from 'react-redux'
-import useComponentInfo from '../../../hooks/useComponentInfo'
+import useGetComponentInfo from '../../../hooks/useGetComponentInfo'
 import { ComponentPropsType, getComponentConfByType } from '../../../components/QuestionComponents'
 import { changeComponentProps } from '../../../store/componentsReducer'
 
@@ -10,7 +10,7 @@ const NoProps: FC = () => {
 
 const ComponentProp: FC = () => {
   const dispatch = useDispatch()
-  const { selectedComponent } = useComponentInfo()
+  const { selectedComponent } = useGetComponentInfo()
   if (selectedComponent == null) {
     return <NoProps />
   }

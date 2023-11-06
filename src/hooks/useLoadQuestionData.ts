@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { getQuestionById } from '../services/question'
 
 import { resetComponents } from '../store/componentsReducer'
+import { resetPageInfo } from '../store/pageInfoReducer'
 
 function useLoadQuestionData() {
   const { id = '' } = useParams()
@@ -25,11 +26,14 @@ function useLoadQuestionData() {
 
   useEffect(() => {
     if (!data) return
-    let { componentList = [], selectedId } = data
+    let { componentList = [], title = '', desc = '', css = '', js = '' } = data
+
+    let selectedId
     if (componentList.length > 0) {
       selectedId = componentList[0].fe_id
     }
     dispatch(resetComponents({ componentList, selectedId, copiedComponent: null }))
+    dispatch(resetPageInfo({ title, desc, css, js }))
   }, [data, dispatch])
 
   useEffect(() => {

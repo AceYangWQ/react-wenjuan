@@ -2,7 +2,7 @@ import React, { FC, MouseEvent } from 'react'
 import { useDispatch } from 'react-redux'
 import { Spin } from 'antd'
 import classNames from 'classnames'
-import useComponentInfo from '../../../hooks/useComponentInfo'
+import useGetComponentInfo from '../../../hooks/useGetComponentInfo'
 import { getComponentConfByType } from '../../../components/QuestionComponents'
 import { ComponentInfoType, changeSelectedId } from '../../../store/componentsReducer'
 
@@ -20,7 +20,7 @@ type PropsType = {
   loading: boolean
 }
 const EditCanvas: FC<PropsType> = ({ loading }) => {
-  const { componentList, selectedId } = useComponentInfo()
+  const { componentList, selectedId } = useGetComponentInfo()
   const dispatch = useDispatch()
 
   function handleClick(event: MouseEvent, id: string) {

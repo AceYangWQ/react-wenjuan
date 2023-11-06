@@ -3,7 +3,7 @@ import { Tabs } from 'antd'
 import { FileTextOutlined, SettingOutlined } from '@ant-design/icons'
 import ComponentProp from './ComponentProp'
 import PageSetting from './PageSetting'
-import useComponentInfo from '../../../hooks/useComponentInfo'
+import useGetComponentInfo from '../../../hooks/useGetComponentInfo'
 
 // 枚举
 enum TAB_KEY {
@@ -13,7 +13,7 @@ enum TAB_KEY {
 
 const RightPanel: FC = () => {
   const [activeKey, setActiveKey] = useState(TAB_KEY.PROP_KEY)
-  const { selectedId } = useComponentInfo()
+  const { selectedId } = useGetComponentInfo()
 
   useEffect(() => {
     if (selectedId) {
