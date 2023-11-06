@@ -4,7 +4,7 @@ export type QuestionTitlePropsType = {
   isCenter?: boolean
 
   // 用于 propComponent
-  onChange?: (props: QuestionTitlePropsType) => void
+  onChange?: (newProps: QuestionTitlePropsType) => void
   disabled?: boolean
 }
 

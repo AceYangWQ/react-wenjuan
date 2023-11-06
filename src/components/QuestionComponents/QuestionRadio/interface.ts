@@ -6,11 +6,11 @@ export type OptionType = {
 export type QuestionRadioPropsType = {
   title?: string
   value?: string
-  options?: Array<OptionType>
-  isVertical?: false
+  options?: OptionType[]
+  isVertical?: boolean
 
   // 用于 propComponent
-  onChange?: (props: QuestionRadioPropsType) => void
+  onChange?: (newProps: QuestionRadioPropsType) => void
   disabled?: boolean
 }
 

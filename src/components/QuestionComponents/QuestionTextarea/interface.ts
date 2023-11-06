@@ -3,7 +3,7 @@ export type QuestionTextareaPropsType = {
   placeholder?: string
 
   // 用于 propComponent
-  onChange?: (props: QuestionTextareaPropsType) => void
+  onChange?: (newProps: QuestionTextareaPropsType) => void
   disabled?: boolean
 }
 

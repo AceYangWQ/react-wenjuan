@@ -3,7 +3,7 @@ export type QuestionParagraphPropsType = {
   isCenter?: boolean
 
   // 用于 propComponent
-  onChange?: (props: QuestionParagraphPropsType) => void
+  onChange?: (newProps: QuestionParagraphPropsType) => void
   disabled?: boolean
 }
 

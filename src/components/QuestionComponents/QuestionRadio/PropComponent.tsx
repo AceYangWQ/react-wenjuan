@@ -1,9 +1,8 @@
 import React, { FC, useEffect } from 'react'
 import { Form, Input, Select, Checkbox, Button, Space } from 'antd'
 import { PlusOutlined, MinusCircleOutlined } from '@ant-design/icons'
-import { QuestionRadioPropsType } from './interface'
+import { QuestionRadioPropsType, OptionType } from './interface'
 import { nanoid } from '@reduxjs/toolkit'
-import { OptionType } from './interface'
 
 const PropComponent: FC<QuestionRadioPropsType> = (props: QuestionRadioPropsType) => {
   const { title = '', options = [], value = '', isVertical = false, onChange, disabled } = props
@@ -16,7 +15,7 @@ const PropComponent: FC<QuestionRadioPropsType> = (props: QuestionRadioPropsType
   function handleValuesChange() {
     const values = form.getFieldsValue() as QuestionRadioPropsType
     const { options = [] } = values
-    options.filter(opt => !(opt.label == null))
+    options.filter((opt: OptionType) => !(opt.label == null))
 
     options.forEach((option: OptionType) => {
       if (!option.value) {

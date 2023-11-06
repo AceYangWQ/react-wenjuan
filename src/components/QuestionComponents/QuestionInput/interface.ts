@@ -3,7 +3,7 @@ export type QuestionInputPropsType = {
   placeholder?: string
 
   // 用于 propComponent
-  onChange?: (props: QuestionInputPropsType) => void
+  onChange?: (newProps: QuestionInputPropsType) => void
   disabled?: boolean
 }
 
