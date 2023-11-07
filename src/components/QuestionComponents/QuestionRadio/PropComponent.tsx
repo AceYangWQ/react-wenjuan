@@ -60,7 +60,15 @@ const PropComponent: FC<QuestionRadioPropsType> = (props: QuestionRadioPropsType
                   >
                     <Input placeholder="请输入选项文字" />
                   </Form.Item>
-                  {index > 1 && <MinusCircleOutlined onClick={() => remove(name)} />}
+                  <Form.Item>
+                    {index > 1 && (
+                      <Button
+                        type="text"
+                        onClick={() => remove(name)}
+                        icon={<MinusCircleOutlined />}
+                      ></Button>
+                    )}
+                  </Form.Item>
                 </Space>
               ))}
               <Form.Item>

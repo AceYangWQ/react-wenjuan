@@ -69,7 +69,15 @@ const PropComponent: FC<QuestionCheckboxPropsType> = (props: QuestionCheckboxPro
                     >
                       <Input placeholder="请输入选项文字" />
                     </Form.Item>
-                    {index > 0 && <MinusCircleOutlined onClick={() => remove(name)} />}
+                    <Form.Item>
+                      {index > 0 && (
+                        <Button
+                          type="text"
+                          onClick={() => remove(name)}
+                          icon={<MinusCircleOutlined />}
+                        ></Button>
+                      )}
+                    </Form.Item>
                   </Space>
                 )
               })}
