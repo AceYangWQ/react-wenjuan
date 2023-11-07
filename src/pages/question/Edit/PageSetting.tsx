@@ -15,7 +15,7 @@ const PageSetting: FC = () => {
   }, [pageInfo, form])
 
   function handleValuesChange() {
-    dispatch(resetPageInfo(pageInfo))
+    dispatch(resetPageInfo(form.getFieldsValue()))
   }
 
   return (
