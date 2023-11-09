@@ -10,8 +10,14 @@ import {
 
 // 是否
 function isActiveElement() {
-  const activeEle = document.activeElement
-  if (activeEle === document.body) return true
+  const activeElement = document.activeElement
+  // 使用 dnd-kit 之前
+  // if (activeEle === document.body) return true
+
+  // 使用 dnd-kit 之后
+  if (activeElement === document.body) return true
+  if (activeElement?.matches('div[role="button"]')) return true
+
   return false
 }
 
