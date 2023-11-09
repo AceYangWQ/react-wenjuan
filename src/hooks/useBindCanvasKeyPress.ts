@@ -1,5 +1,6 @@
 import { useKeyPress } from 'ahooks'
 import { useDispatch } from 'react-redux'
+import { ActionCreators as UndoAcitonCreators } from 'redux-undo'
 import {
   copyComponent,
   pasteCopiedComponent,
@@ -51,6 +52,24 @@ function useBindCanvasKeyPress() {
   useKeyPress('downarrow', () => {
     if (!isActiveElement()) return
     dispatch(selectNextComponent())
+  })
+
+  // 撤销
+  useKeyPress(
+    ['ctrl.z', 'meta.z'],
+    () => {
+      if (!isActiveElement()) return
+      dispatch(UndoAcitonCreators.undo())
+    },
+    {
+      exactMatch: true, // 只能是 ctrl + z
+    }
+  )
+
+  // 重做
+  useKeyPress(['ctrl.shift.z', 'meta.shift.z'], () => {
+    if (!isActiveElement()) return
+    dispatch(UndoAcitonCreators.redo())
   })
 }
 
