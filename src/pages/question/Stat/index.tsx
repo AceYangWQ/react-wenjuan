@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Spin, Result, Button } from 'antd'
 import { useTitle } from 'ahooks'
 import { useNavigate } from 'react-router-dom'
@@ -7,10 +7,16 @@ import useGetPageInfo from '../../../hooks/useGetPageInfo'
 import StatHeader from './StatHeader'
 
 import styles from './index.module.scss'
+import ComponentList from './ComponentList'
+import PageStat from './PageStat'
+import ChartStat from './ChartStat'
 
 const Stat: FC = () => {
   const { loading } = useLoadQuestionData()
   const { title, isPublished } = useGetPageInfo()
+  const [selectedComponentId, setSelectedComponentId] = useState('')
+  const [selectedComponentType, setSelectedComponentType] = useState('')
+
   const nav = useNavigate()
   useTitle(`问卷统计-${title}`)
 
@@ -40,9 +46,26 @@ const Stat: FC = () => {
     }
     return (
       <div className={styles.content}>
-        <div className={styles.left}>左</div>
-        <div className={styles.main}>中</div>
-        <div className={styles.right}>右</div>
+        <div className={styles.left}>
+          <ComponentList
+            selectedComponentId={selectedComponentId}
+            setSelectedComponentId={setSelectedComponentId}
+            setSelectedComponentType={setSelectedComponentType}
+          />
+        </div>
+        <div className={styles.main}>
+          <PageStat
+            selectedComponentId={selectedComponentId}
+            setSelectedComponentId={setSelectedComponentId}
+            setSelectedComponentType={setSelectedComponentType}
+          />
+        </div>
+        <div className={styles.right}>
+          <ChartStat
+            selectedComponentId={selectedComponentId}
+            selectedComponentType={selectedComponentType}
+          />
+        </div>
       </div>
     )
   }

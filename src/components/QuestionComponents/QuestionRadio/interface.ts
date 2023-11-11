@@ -24,3 +24,8 @@ export const QuestionRadioDefaultProps: QuestionRadioPropsType = {
   ],
   isVertical: false,
 }
+
+// 统计组件
+export type QuestionRadioStatPropsType = {
+  stat: Array<{ name: string; count: number }>
+}
