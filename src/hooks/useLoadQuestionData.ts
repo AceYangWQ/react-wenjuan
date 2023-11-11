@@ -26,14 +26,14 @@ function useLoadQuestionData() {
 
   useEffect(() => {
     if (!data) return
-    let { componentList = [], title = '', desc = '', css = '', js = '' } = data
+    let { componentList = [], title = '', desc = '', css = '', js = '', isPublished } = data
 
     let selectedId
     if (componentList.length > 0) {
       selectedId = componentList[0].fe_id
     }
     dispatch(resetComponents({ componentList, selectedId, copiedComponent: null }))
-    dispatch(resetPageInfo({ title, desc, css, js }))
+    dispatch(resetPageInfo({ title, desc, css, js, isPublished }))
   }, [data, dispatch])
 
   useEffect(() => {

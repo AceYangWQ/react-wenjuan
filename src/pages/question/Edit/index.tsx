@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { useDispatch } from 'react-redux'
+import { useTitle } from 'ahooks'
 import useLoadQuestionData from '../../../hooks/useLoadQuestionData'
 import EditHeader from './EditHeader'
 import EditCanvas from './EditCanvas'
@@ -8,9 +9,12 @@ import LeftPanel from './LeftPanel'
 import RightPanel from './RightPanel'
 
 import styles from './index.module.scss'
+import useGetPageInfo from '../../../hooks/useGetPageInfo'
 
 const Edit: FC = () => {
   const { loading } = useLoadQuestionData()
+  const { title } = useGetPageInfo()
+  useTitle(`问卷统计-${title}`)
 
   const dispatch = useDispatch()
   function clearSelectedId() {
