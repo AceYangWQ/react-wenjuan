@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import Component from '../../components/QuestionComponents/QuestionInput/Component'
+import Component from '../../components/QuestionComponents/QuestionTextarea/Component'
 
 const meta = {
-  title: 'Question/QuestionInput',
+  title: 'Question/QuestionTextarea',
   component: Component,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout

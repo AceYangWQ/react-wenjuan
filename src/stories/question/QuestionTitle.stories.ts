@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import Component from '../../components/QuestionComponents/QuestionInput/Component'
+import Component from '../../components/QuestionComponents/QuestionTitle/Component'
 
 const meta = {
-  title: 'Question/QuestionInput',
+  title: 'Question/QuestionTitle',
   component: Component,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
@@ -24,7 +24,8 @@ export const Defalut: Story = {
 // 设置属性
 export const SetProps: Story = {
   args: {
-    title: 'hello',
-    placeholder: 'please input...',
+    text: 'hello',
+    level: 3,
+    isCenter: true,
   },
 }
